@@ -1,20 +1,16 @@
 var imgs = [
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/optin-checked.jpg'
-]
-
-var mapQuestions = [
-    {
-        index: 0,
-        title: 'Dans quelle tranche <br />d’âge vous situez-vous ?',
-        text: '*Vous avez moins de 18 ans ? Nous sommes désolés de ne pouvoir accepter vos réponses, cette enquête étant strictement réservée aux personnes majeures.',
-        answers: [
-            '18 – 30 ans',
-            '31 – 45 ans',
-            '46 – 60 ans',
-            '61 – 75 ans',
-            '76 ans et plus'
-        ]
-    }
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/optin-checked.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-1.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-2.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-3.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-4.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-5.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-6.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-7.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-8.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-9.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-NPA.png',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-merci.png'
 ]
 
 var index = 0;
@@ -28,8 +24,84 @@ $(document).ready( function() {
         utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.12/js/utils.js',
         initialCountry: ['fr']
     });
-
+    handleQuestions(true)
 });
+
+$(document).on("click", ".answer-btn, .answer-btn span", function(e){
+    console.log('CLICK ANSWER')
+    e.preventDefault()
+    var _this = $(e.target)
+    $('#questions .right .answer').each((i) => {
+        $('#questions .right .answer').eq(i).removeClass('selected')
+    })
+
+
+
+    if (_this.hasClass('selected')) {
+        _this.removeClass('selected')
+    }
+    else {
+        _this.addClass('selected')
+    }
+})
+$(document).on("click", "#validate-question", function(e){
+    e.preventDefault()
+    handleQuestions()
+})
+
+function handleQuestions(first) {
+    console.log($('#questions .right').height() - 120)
+    console.log($('.header .right').height() - 120)
+
+    var height = $('#questions .right').height() - 120
+
+    if (index >= mapQuestions.length) {
+        $('#questions').fadeOut('slow', () => {
+            $('#nps').fadeIn('slow', () => {
+            })
+        })
+    }
+    else {
+        if (!first) {
+            $('#questions').fadeOut('slow', () => {
+                changeQuestionElement(height)
+                $('#questions').fadeIn('slow', () => {
+                })
+            })
+        }
+        else
+            changeQuestionElement($('.header .right').height() - 120)
+
+    }
+
+
+}
+
+function changeQuestionElement(heightContainer) {
+    console.log(heightContainer)
+    const question = mapQuestions[index]
+
+    $('#questions .right').empty()
+
+    $('#questions').css('background-image', `url(https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-${index + 1}.png)`)
+    $('#sur-title-questions').html(question.sur_title)
+    $('#title-questions').html(question.title)
+    $('#sub-title-questions').html(question.sub_title)
+
+    for (var i = 0; i < question.answers.length; i++) {
+        $('#questions .right').append(`<div class="wrapper"><a class="answer answer-btn" href="""></a></div>`)
+        $('#questions .right .answer').eq(i).html(question.answers[i])
+        const nb = Math.round(heightContainer / question.answers.length - 1)
+        $('div.wrapper').css('height', nb)
+    }
+    $('#questions .right').append(`<button id="validate-question">Valider</span></button>`)
+
+    index++
+}
+
+
+
+
 
 function populateCountry() {
     for (c of country) {
@@ -44,16 +116,30 @@ $(window).scroll(function() {
 $(document).on('closed', '.remodal', function (e) {
 });
 
-
-
-$('#bt-header').click(() => {
+$(document).on("click", "#bt-header", function(e){
+    e.preventDefault()
     if ($('.header form').css('display') === 'none') { // FIRST
-        $('.header .right').css('padding', '10% 42px 20px')
+        $('.header .right .inner').css('padding', '30% 42px 20px')
         $('.header form').slideDown('slow')
         $('.header .right p').slideUp('slow')
     }
+    else {
+        $('.header').fadeOut('slow', () => {
+            $('.questions').fadeIn('slow', () => {
+
+            })
+        })
+    }
 })
 
+
+$(document).on("click", "#bt-nps", function(e){
+    e.preventDefault()
+    $('#nps').fadeOut('slow', () => {
+        $('#merci').fadeIn('slow', () => {
+        })
+    })
+})
 
 
 

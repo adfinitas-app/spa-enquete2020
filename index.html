@@ -14,9 +14,8 @@
 	<meta property="og:image"              content="" />
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" />
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css' />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,500,700' rel='stylesheet' type='text/css' />
 	<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
 	<link rel="icon" type="image/png" href="" />
 	<link rel="stylesheet" href="assets/css/tel.css">
 	<link rel='stylesheet' href='assets/css/app.css' type='text/css'/>
@@ -42,38 +41,40 @@
 				</div>
 			</div>
 			<div class="small-12 large-4 columns right">
-				<form>
-					<input type="text" name="f_email" id="f_email" placeholder="Email*" required>
-					<select name="f_civility" id="f_civility" required>
-						<option value="" selected disabled>Civilité</option>
-						<option value="man">Monsieur</option>
-						<option value="women">Madame</option>
-					</select>
-					<input type="text" name="f_lastname" id="f_lastname" placeholder="Nom*" required>
-					<input type="text" name="f_firstname" id="f_firstname" placeholder="Prénom*">
-					<input type="text" name="f_email" id="f_adress" placeholder="Adresse">
-					<input type="text" name="f_zipcode" id="f_zipcode" placeholder="Code postal">
-					<input type="text" name="f_city" id="f_city" placeholder="Ville">
-					<select name="f_country" id="f_country" required>
-						<option value="" selected disabled>Pays</option>
-						<option value="" id="country-loading">Patientez...</option>
-					</select>
-					<input type="text" name="f_phone" id="f_phone">
-					<label class="checkbox">
-						<input type="checkbox" id="f_optin" name="optin">
-						<span></span>
-						En validant, j’accepte d’être contacté par la SPA et de recevoir les résultats de l’enquête nationale par email, téléphone ou tout autre moyen de communication. Vous pouvez vous désinscrire à tout moment des communications de la SPA.
-					</label>
-					<span class="mandatory">*champs obligatoires</span>
-				</form>
-				<p class="bold">Que pensez-vous du sort réservé aux animaux dans notre pays ? Sont-ils respectés ? Sont-ils aimés ? Sont-ils en danger ?</p>
-				<button class="btn-wide"id="bt-header">
-					<img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" />
-					Je réponds
-				</button>
-				<p>Merci de prendre quelques minutes pour exprimer votre opinion aux côtés de la SPA, 1ère association de protection animale en France.</p>
-				<p>Nos 62 refuges accueillent chaque année près de 47 000 animaux abandonnés ou maltraités.</p>
-				<p class="bold">Votre avis nous est très précieux. Vous aussi, faites-entendre votre voix !</p>
+				<div class="inner">
+					<form>
+						<input type="text" name="f_email" id="f_email" placeholder="Email*" required>
+						<select name="f_civility" id="f_civility" required>
+							<option value="" selected disabled>Civilité</option>
+							<option value="man">Monsieur</option>
+							<option value="women">Madame</option>
+						</select>
+						<input type="text" name="f_lastname" id="f_lastname" placeholder="Nom*" required>
+						<input type="text" name="f_firstname" id="f_firstname" placeholder="Prénom*">
+						<input type="text" name="f_email" id="f_adress" placeholder="Adresse">
+						<input type="text" name="f_zipcode" id="f_zipcode" placeholder="Code postal">
+						<input type="text" name="f_city" id="f_city" placeholder="Ville">
+						<select name="f_country" id="f_country" required>
+							<option value="" selected disabled>Pays</option>
+							<option value="" id="country-loading">Patientez...</option>
+						</select>
+						<input type="text" name="f_phone" id="f_phone">
+						<label class="checkbox">
+							<input type="checkbox" id="f_optin" name="optin">
+							<span></span>
+							En validant, j’accepte d’être contacté par la SPA et de recevoir les résultats de l’enquête nationale par email, téléphone ou tout autre moyen de communication. Vous pouvez vous désinscrire à tout moment des communications de la SPA.
+						</label>
+						<span class="mandatory">*champs obligatoires</span>
+					</form>
+					<p class="bold">Que pensez-vous du sort réservé aux animaux dans notre pays ? Sont-ils respectés ? Sont-ils aimés ? Sont-ils en danger&nbsp;?</p>
+					<button class="btn-wide"id="bt-header">
+						<img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" />
+						Je réponds
+					</button>
+					<p>Merci de prendre quelques minutes pour exprimer votre opinion aux côtés de la SPA, 1ère association de protection animale en France.</p>
+					<p>Nos 62 refuges accueillent chaque année près de 47 000 animaux abandonnés ou maltraités.</p>
+					<p class="bold">Votre avis nous est très précieux. Vous aussi, faites-entendre votre voix&nbsp;!</p>
+				</div>
 			</div>
 			<div class="fixed-nav">
 				<a href="" target="_blank">Contact</a>
@@ -84,12 +85,106 @@
 		</div>
 	</div>
 </section>
+<section>
+	<div class="row expanded slide questions" id="questions">
+		<div class="row text-center container">
+			<div class="small-12 large-8 columns left">
+				<div class="row images">
+					<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/Logo.png" alt="logo SPA" /></a>
+					<img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/175.png" alt="175 ans de protection animale" />
+				</div>
+				<div class="row title">
+					<p id="sur-title-questions"></p>
+					<h3 id="title-questions"></h3>
+					<p id="sub-title-questions"></p>
+				</div>
+			</div>
+			<div class="small-12 large-4 columns right">
+				<!-- ANSWERS HERE -->
+			</div>
+			<div class="fixed-nav">
+				<a href="" target="_blank">Contact</a>
+				<a href="" target="_blank">Mentions légales</a>
+				<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/fb.png" alt="Facebook SPA" /></a>
+				<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/tw.png" alt="Twitter SPA" /></a>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="row expanded slide" id="nps">
+		<div class="row max-width text-center container">
+			<div class="small-12 columns">
+				<div class="row images">
+					<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/Logo.png" alt="logo SPA" /></a>
+					<img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/175.png" alt="175 ans de protection animale" />
+				</div>
+				<div class="row title">
+					<h1><span>MercI</span><br />
+						d’avoir répondu à notre enquête</h1>
+					<p>Une dernière question importante : Recommanderiez-vous la SPA<br />aux membres de votre famille, à vos amis, à vos collègues ?</p>
+				</div>
+				<div class="row nps-answers">
+					<p>Non pas<br />du tout</p>
+					<a href="" class="nps-answer">1</a>
+					<a href="" class="nps-answer">2</a>
+					<a href="" class="nps-answer">3</a>
+					<a href="" class="nps-answer">4</a>
+					<a href="" class="nps-answer">5</a>
+					<a href="" class="nps-answer">6</a>
+					<a href="" class="nps-answer">7</a>
+					<a href="" class="nps-answer">8</a>
+					<a href="" class="nps-answer">9</a>
+					<a href="" class="nps-answer">10</a>
+					<p>Oui tout<br />à fait</p>
+				</div>
+				<div class="row nps-btn" id="bt-nps">
+					<a href="">Valider</a>
+				</div>
+			</div>
 
+			<div class="fixed-nav">
+				<a href="" target="_blank">Contact</a>
+				<a href="" target="_blank">Mentions légales</a>
+				<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/fb.png" alt="Facebook SPA" /></a>
+				<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/tw.png" alt="Twitter SPA" /></a>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="row expanded slide" id="merci">
+		<div class="row max-width text-center container">
+			<div class="small-12 columns">
+				<div class="row images">
+					<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/Logo.png" alt="logo SPA" /></a>
+					<img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/175.png" alt="175 ans de protection animale" />
+				</div>
+				<div class="row title">
+					<h1>Votre note a bien été prise en compte, merci !</h1>
+					<p>Et si vous vous engagiez un peu plus à nos côtés ?<br />
+						Pour mener à bien ses missions, la SPA s’appuie principalement sur<br />la générosité du public. Nous espérons sincèrement pouvoir<br />compter sur vous pour secourir, défendre et protéger les animaux.</p>
+				</div>
+				<div class="row merci-btn">
+					<a href="">JE FAIS UN DON</a>
+				</div>
+			</div>
+
+			<div class="fixed-nav">
+				<a href="" target="_blank">Contact</a>
+				<a href="" target="_blank">Mentions légales</a>
+				<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/fb.png" alt="Facebook SPA" /></a>
+				<a href="" target="_blank"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/tw.png" alt="Twitter SPA" /></a>
+			</div>
+		</div>
+	</div>
+</section>
 <script src="https://code.jquery.com/jquery.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js" type="text/javascript"></script>
 <script src="assets/js/remodal.js" type="text/javascript"></script>
 <script src="assets/js/country.js" type="text/javascript"></script>
 <script src="assets/js/intl-tel-input.js" type="text/javascript"></script>
+<script src="assets/js/data.js" type="text/javascript"></script>
 <script src="assets/js/app.js" type="text/javascript"></script>
 </body>
 </html>

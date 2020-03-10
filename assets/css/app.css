@@ -121,6 +121,8 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     min-height: 100vh;
     width: 100%;
     position: relative;
+    background-size: cover;
+    background-position: center;
 }
 
 .fixed-nav {
@@ -130,6 +132,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     bottom: 0;
     text-align: left;
     padding: 10px 30px;
+    z-index: 1;
 }
 .fixed-nav a {
     margin-right: 15px;
@@ -145,8 +148,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 
 .header {
     background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-1.png");
-    background-size: cover;
-    background-position: center;
+
 }
 
 .header .title {
@@ -165,12 +167,13 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     color: white;
 }
 
-.header .left {
-    padding-top: 80px;
-}
+
 .header .right {
+    min-height: 100vh;
+}
+.header .right .inner {
     text-align: left;
-    padding: 20% 42px 20px;
+    padding: 65% 42px 20px;
 
     -webkit-transition: padding 0.4s ease-out;
     -moz-transition: padding 0.4s ease-out;
@@ -207,18 +210,204 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     -o-transition: all 0.4s ease-out;
     transition: all 0.4s ease-out;
 }
-
-.container .left .images {
+.container .left {
+    padding-top: 80px;
+}
+.container .images {
     text-align: center;
     margin-bottom: 12px;
 }
-.container .left .images img {
+.container .images img {
     margin: 15px;
 }
 
 .container .right {
     background-color: rgba(0,0,0,0.1);
+}
+
+
+#questions {
+    display: none;
+}
+#questions .container .left .images {
+    margin-bottom: 6%;
+}
+#questions .container .left .images {
+    margin-bottom: 6%;
+}
+#questions .container .right {
+    padding: 0;
     min-height: 100vh;
+    z-index: 2;
+    position: relative;
+}
+#title-questions {
+    font-family: 'Adopte Bold', serif;
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 0.9;
+    color: white;
+}
+#sur-title-questions {
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: white;
+}
+#sub-title-questions {
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+    line-height: 1.2;
+    color: white;
+}
+
+#questions .right {
+
+}
+#questions .right .wrapper {
+    display: table;
+    width: 100%;
+}
+#questions .right .answer {
+    background-color: rgba(0,0,0,0.1);
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+    line-height: 1.2;
+    color: white;
+}
+#questions .right .answer:hover, #questions .right .answer:focus {
+    background-color: rgba(255,255,255,0.2);
+}
+#questions .right .answer.selected {
+    background-color: rgba(255,255,255,1) !important;
+    color: black;
+}
+#questions .right button {
+    height: 127px;
+    background-color: #EF5713;
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+#nps {
+    display: none;
+    padding-top: 80px;
+    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-NPA.png");
+}
+#nps h1 {
+    font-family: 'Adopte Bold', serif;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 0.9;
+    color: white;
+}
+#nps h1 span {
+    font-size: 80px;
+}
+#nps .title {
+    margin-top: 10%;
+}
+#nps .title p {
+    font-family: 'Open Sans', serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    color: white;}
+
+#nps .nps-answers * {
+    display: inline-block;
+}
+#nps .nps-answers p {
+    font-family: 'Open Sans', serif;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 0;
+    margin-top: 40px;
+}
+#nps .nps-answer {
+    width: 68px;
+    height: 61px;
+    padding-top: 20px;
+    background-color: rgba(0,0,0,0.1);
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+    line-height: 1;
+    color: white;
+}
+#nps .nps-btn {
+    width: 720px;
+    max-width: 100%;
+}
+#nps .nps-btn a {
+    padding-top: 16px;
+    display: block;
+    background-color: #EF5713;
+    margin-top: 18px;
+    width: 100%;
+    height: 60px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 1;
+    color: white;
+}
+#nps .nps-answers a:hover, #nps .nps-answers a.selected {
+    background-color: white;
+    color: black;
+}
+
+
+#merci {
+    display: none;
+    padding-top: 80px;
+    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-merci.png");
+}
+#merci h1 {
+    font-family: 'Adopte Bold', serif;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 0.9;
+    color: white;
+}
+#merci .title {
+    margin-top: 10%;
+}
+#merci .title p {
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: white;}
+
+#merci .merci-btn {
+    width: 275px;
+    max-width: 100%;
+}
+#merci .merci-btn a {
+    padding-top: 16px;
+    display: block;
+    background-color: #EF5713;
+    margin-top: 18px;
+    width: 100%;
+    height: 60px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 1;
+    color: white;
 }
 
 @media screen and (max-width: 640px) {
