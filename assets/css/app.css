@@ -1,0 +1,226 @@
+:root {
+    --c_brown: #6f6150;
+    --c_orange: #eb6607;
+    --c_dark: #2b2b2b;
+
+}
+.iti__flag {background-image: url("../img/flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .iti__flag {background-image: url("../img/flags@2x.png");}
+}
+@font-face {
+    font-family: 'Helvetica Neue Bold';
+    src: url('../fonts/helveticaneueltstd-bdcn-webfont-webfont-webfont.woff2') format('woff2'),
+    url('../fonts/helveticaneueltstd-bdcn-webfont-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Helvetica Neue CN';
+    src: url('../fonts/helveticaneueltstd-cn-webfont-webfont.woff2') format('woff2'),
+    url('../fonts/helveticaneueltstd-cn-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Helvetica Neue Light';
+    src: url('../fonts/helveticaneueltstd-ltcn-webfont-webfont.woff2') format('woff2'),
+    url('../fonts/helveticaneueltstd-ltcn-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Adopte Bold';
+    src: url('../fonts/adopte_bold-webfont.woff2') format('woff2'),
+    url('../fonts/adopte_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Adopte';
+    src: url('../fonts/adopte_regular-webfont.woff2') format('woff2'),
+    url('../fonts/adopte_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
+    font-family: "Open Sans", sans-serif;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+.non-bold {
+    font-weight: normal !important;
+}
+.relative {
+    position: relative;
+}
+.no-margin {
+    margin: 0;
+}
+.no-padding {
+    padding: 0;
+}
+.max-width {
+    max-width: 75rem !important;
+}
+.min-width {
+    min-width: 75rem !important;
+}
+.visible {
+    visibility: visible !important;
+}
+.container-inline div {
+    display: inline-block;
+}
+.bold {
+    font-weight: bold;
+}
+.flex {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inline-block {
+    display: inline-block;
+}
+.button.custom {
+    background-color: #f37037;
+    background-image: url('https://s3.amazonaws.com/heroku-adfinitas-campaign/spa-legestequisauve/bg-orange-btn.png');
+    background-size: cover;
+    border-radius: 10px;
+    padding: 20px 50px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Helvetica Neue Bold', serif;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+}
+
+.button.custom:hover {
+    transform: scale(1.05);
+}
+
+.slide {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.fixed-nav {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align: left;
+    padding: 10px 30px;
+}
+.fixed-nav a {
+    margin-right: 15px;
+    font-family: 'Barlow Condensed', serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+}
+.fixed-nav img {
+    margin-right: 15px;
+}
+
+.header {
+    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-1.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.header .title {
+    color: white;
+}
+.header .title h1 {
+    font-family: 'Adopte Bold', serif;
+    font-size: 82px;
+    line-height: 0.9;
+}
+.header .title p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: white;
+}
+
+.header .left {
+    padding-top: 80px;
+}
+.header .right {
+    text-align: left;
+    padding: 20% 42px 20px;
+
+    -webkit-transition: padding 0.4s ease-out;
+    -moz-transition: padding 0.4s ease-out;
+    -o-transition: padding 0.4s ease-out;
+    transition: padding 0.4s ease-out;
+}
+
+.header .right p {
+    font-family: 'Open Sans', serif;
+    font-size: 18px;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 22px;
+}
+.header .right button:hover {
+    transform: scale(1.04);
+}
+.header .right button img {
+    margin-right: 10px;
+}
+.header .right button {
+    width: 100%;
+    height: 75px;
+    background-color: #EF5713;
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+}
+
+.container .left .images {
+    text-align: center;
+    margin-bottom: 12px;
+}
+.container .left .images img {
+    margin: 15px;
+}
+
+.container .right {
+    background-color: rgba(0,0,0,0.1);
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 640px) {
+
+}

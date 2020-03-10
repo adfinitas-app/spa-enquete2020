@@ -1,0 +1,111 @@
+
+
+.intl-tel-input {
+    width: 100%;
+}
+.iti-arrow {
+    border-top: 4px solid #fff !important;
+}
+
+.checkbox {
+    margin: 20px auto 0;
+    font-family: 'Open Sans', serif;
+    font-size: 12px;
+    color: white;
+}
+.checkbox span {
+    width: 13px;
+    height: 13px;
+
+    display: block;
+    float: left;
+    margin-right: 6px;
+    margin-top: 5px;
+    background: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/optin-unchecked.png");
+}
+
+.checkbox input:checked + span {
+    background: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/optin-checked.jpg");
+}
+#f_optin {
+    display: none;
+}
+.header form {
+    display: none;
+}
+.header form .mandatory {
+    display: block;
+    font-family: 'Open Sans', serif;
+    font-size: 12px;
+    color: white;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.header form input, .header form select {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #B8B3A1;
+    box-shadow: none;
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
+.header form input:focus {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #6f6150;
+    box-shadow: none;
+}
+.header form select {
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+
+    line-height: 1;
+    background: url(https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-down.png) no-repeat right;
+    -webkit-appearance: none;
+    background-position-x: 95%;
+}
+.header form select option {
+    color: #000;
+}
+.header form input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
+.header form input::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
+.header form input:-ms-input-placeholder { /* IE 10+ */
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
+.header form input:-moz-placeholder { /* Firefox 18- */
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
+#f_phone::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #cecece;
+}
+.header form input::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
+.header form input:-ms-input-placeholder { /* IE 10+ */
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
+.header form input:-moz-placeholder { /* Firefox 18- */
+    color: white;
+    font-family: 'Open Sans', serif;
+    font-size: 20px;
+}
