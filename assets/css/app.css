@@ -4,6 +4,9 @@
     --c_dark: #2b2b2b;
 
 }
+html, body {
+    width: 100%;
+}
 .iti__flag {background-image: url("../img/flags.png");}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -146,9 +149,42 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     margin-right: 15px;
 }
 
+#modal-small {
+    display: none;
+    position: fixed;
+    padding: 24px .625rem;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 1;
+}
+#modal-small p {
+    font-family: 'Open Sans', serif;
+    font-size: 16px;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 22px;
+}
+.text-small {
+    display: none;
+    position: relative;
+    z-index: 2;
+}
+#filter-small {
+    display: none;
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 1;
+}
+#back-small {
+    display: none;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 12px;
+}
 .header {
+    display: none;
     background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-1.jpg");
-
 }
 
 .header .title {
@@ -180,6 +216,9 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     -o-transition: padding 0.4s ease-out;
     transition: padding 0.4s ease-out;
 }
+.header .right .inner.padding-expanded {
+    padding: 5% 42px 20px;
+}
 
 .header .right p {
     font-family: 'Open Sans', serif;
@@ -191,10 +230,10 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 .header .right button:hover {
     transform: scale(1.04);
 }
-.header .right button img {
+.header .right button img, #modal-small button img {
     margin-right: 10px;
 }
-.header .right button {
+.header .right button, #modal-small button {
     width: 100%;
     height: 75px;
     background-color: #EF5713;
@@ -205,10 +244,10 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     text-transform: uppercase;
     margin-bottom: 20px;
 
-    -webkit-transition: all 0.4s ease-out;
-    -moz-transition: all 0.4s ease-out;
-    -o-transition: all 0.4s ease-out;
-    transition: all 0.4s ease-out;
+    -webkit-transition: -moz-transform 0.4s ease-out;
+    -moz-transition: -webkit-transform 0.4s ease-out;
+    -o-transition: -moz-transform 0.4s ease-out;
+    transition: transform 0.4s ease-out;
 }
 .container .left {
     padding-top: 80px;
@@ -227,7 +266,6 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 
 
 #questions {
-    display: none;
 }
 #questions .container .left .images {
     margin-bottom: 6%;
@@ -243,7 +281,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 }
 #title-questions {
     font-family: 'Adopte Bold', serif;
-    font-size: 80px;
+    font-size: 72px;
     font-weight: bold;
     line-height: 0.9;
     color: white;
@@ -288,7 +326,8 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     color: black;
 }
 #questions .right button {
-    height: 127px;
+    height: 121px;
+    padding: 12px;
     background-color: #EF5713;
     color: white;
     font-family: 'Barlow Condensed', sans-serif;
@@ -297,6 +336,46 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     text-transform: uppercase;
     width: 100%;
 }
+
+#questions .cursor-container {
+    margin-top: 70px;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    width: 486px;
+}
+#questions .cursor-item {
+    font-size: 0;
+    display: inline-block;
+    width: 50px;
+    height: 12px;
+    background-color: rgba(0,0,0,0.3);
+}
+#questions .cursor {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -18px;
+    width: 50px;
+}
+#questions .cursor .inner {
+    position: relative;
+    text-align: center;
+}
+#questions .cursor .inner span {
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-60%) translateX(-50%);
+
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: #EF5713;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
 
 .error {
     display: none;
@@ -419,6 +498,163 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     color: white;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-height: 900px) {
+    #title-questions {
+        font-size: 58px;
+    }
 
+}
+@media screen and (max-width: 1010px) {
+    .header {
+        background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-1-small.png");
+        padding-bottom: 60px;
+    }
+    .container {
+        max-width: 100% !important;
+    }
+    .header .container .right {
+        background-color: transparent;
+        min-height: auto;
+    }
+    .header .right .inner {
+        padding: 10% 42px 20px;
+    }
+           .header .right .inner.padding-expanded {
+        padding: 5% 42px 20px;
+    }
+
+    #sub-title-questions, #questions .right .answer, #nps .title p {
+        font-size: 17px;
+    }
+    #title-questions {
+        font-size: 52px;
+    }
+    #questions .cursor {
+        width: 36px;
+    }
+    #questions .cursor-container {
+        width: 360px;
+    }
+    #questions .cursor-item {
+        width: 36px;
+    }
+
+
+    #nps .nps-answer {
+        width: 50px;
+        height: 45px;
+        padding-top: 12px;
+    }
+    #nps .nps-btn {
+        width: 540px;
+    }
+    #nps .nps-btn a {
+        height: 45px;
+        font-size: 21px;
+        padding-top: 11px;
+    }
+    #nps h1 span {
+        font-size: 70px;
+    }
+    #nps h1 {
+        font-size: 48px;
+    }
+    #nps .nps-answers p {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .fixed-nav {
+        padding: 10px 5px;
+    }
+    .fixed-nav img {
+        margin-right: 0;
+    }
+    .fixed-nav a {
+        font-size: 14px;
+    }
+    .container .left {
+        padding-top: 0;
+    }
+    .header .title h1 {
+        font-size: 34px;
+    }
+    .header .title p {
+        font-size: 20px;
+    }
+    .header .right button, #modal-small button {
+        margin-top: 135px;
+        width: 100%;
+        height: 60px;
+        font-size: 20px;
+        position: relative;
+        z-index: 2;
+    }
+    #modal-small button {
+        margin-top: 10px !important;
+    }
+    .header .right .inner {
+        padding: 24px 0 0;
+    }
+
+    #questions .cursor-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 279px;
+    }
+    .cursor {
+        width: 27px !important;
+        top: -5px !important;
+    }
+    #questions .cursor .inner span {
+        font-size: 20px;
+    }
+    #questions .cursor-item {
+        width: 27px;
+    }
+    #title-questions {
+        font-size: 32px;
+    }
+    #sub-title-questions {
+        font-size: 12px;
+    }
+    #questions .container .right {
+        min-height: auto;
+        padding-bottom: 60px;
+        background-color: transparent;
+    }
+    #questions .right .answer {
+        display: block;
+        padding: 25px 6px;
+        margin-bottom: 4px;
+    }
+    #questions .right button {
+        height: 80px;
+    }
+
+    #nps, #merci {
+        padding-top: 10px;
+        padding-bottom: 60px;
+    }
+    #nps h1 {
+        font-size: 28px;
+    }
+    #nps h1 span {
+        font-size: 36px;
+    }
+    #nps .nps-answer {
+        width: 38px;
+    }
+    #nps .nps-answers p {
+        margin-top: 12px;
+    }
+    #merci h1 {
+        font-size: 36px;
+    }
+    #merci .title p {
+        font-size: 16px;
+    }
+    #merci .merci-btn a {
+        margin-top: 14px;
+    }
 }
