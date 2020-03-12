@@ -192,7 +192,7 @@ function adaptAnswerHeight(heightContainer) {
     const question = mapQuestions[index]
 
     const nb = Math.round(heightContainer / question.answers.length - 1)
-    if ($(window).width > 640)
+    if ($(window).width() > 640)
         $('div.wrapper').css('height', nb)
 }
 
