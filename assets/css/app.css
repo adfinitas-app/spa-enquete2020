@@ -227,6 +227,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 
 
 #questions {
+    display: none;
 }
 #questions .container .left .images {
     margin-bottom: 6%;
@@ -307,6 +308,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 }
 
 #nps {
+    display: none;
     padding-top: 80px;
     background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-NPA.jpg");
 }
