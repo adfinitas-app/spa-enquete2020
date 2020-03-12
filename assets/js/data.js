@@ -131,6 +131,7 @@ var mapQuestions = [
         sur_title: null,
         title: 'Quelle doit être selon vous<br />l’action prioritaire de la SPA&nbsp;?',
         sub_title: 'Classez les actions par ordre de priorité.<br />(glisser et déposer les choix)',
+        sub_title_small: 'Classez les actions par ordre de priorité.<br />(Cliquez sur les fléches pour trier les choix)',
         answers: [
             'Le sauvetage des animaux abandonnés<br />ou maltraités et la recherche d’un<br />nouveau foyer aimant dans le cadre<br />d’une adoption responsable',
             'L’éducation des jeunes générations<br />au respect des animaux',

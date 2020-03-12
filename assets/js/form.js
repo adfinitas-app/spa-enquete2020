@@ -2,16 +2,16 @@ $(document).on("click", ".bt-header", function(e){
     e.preventDefault()
     if ($(window.width > 640)) {
         if ($('.header form').css('display') === 'none') { // FIRST
-            $('.header h1').hide()
-            $('.header .images').hide()
-            $('.header .title p').hide()
             $('#expand-small').hide()
             $('.header .right button').css('margin-top', '25px')
             $('#filter-small').show()
             $('#back-small').css('display','block')
             $('.text-small').hide()
+            $('.header .right p').slideUp('slow')
+
 
             $('.header form').slideDown('slow')
+            $('.header .right .inner').css('padding', '25% 42px 20px')
         }
         else {
             if (validateForm()) {

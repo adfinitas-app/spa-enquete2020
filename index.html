@@ -40,7 +40,7 @@
 
 <section>
 	<div class="row expanded slide header">
-		<div id="filter-small"></div>
+		<div class="show-for-small-only" id="filter-small"></div>
 		<div class="row text-center container">
 			<div class="small-12 large-8 columns left">
 				<div class="row images">
@@ -57,7 +57,7 @@
 			</div>
 			<div class="small-12 large-4 columns right">
 				<div class="inner">
-					<a href="" id="back-small"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/back-small.png" /></a>
+					<a href="" id="back-small" class="show-for-small-only"><img src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/back-small.png" /></a>
 					<div class="text-small">
 						<p class="bold">Que pensez-vous du sort réservé aux animaux dans notre pays&nbsp;? Sont-ils respectés&nbsp;? Sont-ils aimés&nbsp;? Sont-ils en danger&nbsp;?</p>
 						<p class="">Merci de prendre quelques minutes pour exprimer votre opinion aux côtés de la SPA, 1ère association de protection animale en France.</p>
@@ -69,9 +69,9 @@
 						<div class="prospect-part">
 							<select name="f_civility" id="f_civility" required>
 								<option value="" selected disabled>Civilité*</option>
-								<option value="Monsieur">Monsieur</option>
-								<option value="Madame">Madame</option>
-								<option value="Autre">Autre</option>
+								<option value="M">Monsieur</option>
+								<option value="F">Madame</option>
+								<option value="O">Autre</option>
 							</select>
 							<input type="text" name="f_lastname" id="f_lastname" placeholder="Nom*" required>
 							<input type="text" name="f_firstname" id="f_firstname" placeholder="Prénom*">
@@ -232,5 +232,6 @@
 <script src="assets/js/data.js" type="text/javascript"></script>
 <script src="assets/js/app.js" type="text/javascript"></script>
 <script src="assets/js/form.js" type="text/javascript"></script>
+<script src="assets/js/adfinitas.js" type="text/javascript"></script>
 </body>
 </html>

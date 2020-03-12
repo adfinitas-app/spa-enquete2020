@@ -56,7 +56,7 @@ function fillLink() {
 
 }
 
-var index = 7;
+var index = 0;
 preload(imgs)
 
 $(document).foundation();
@@ -144,6 +144,11 @@ $(document).on("click", "#validate-question", function(e){
                 mapAnswers.answers[index].answer.push($('.answer-btn').eq(i).text())
             }
         })
+        if (mapQuestions[index].sortable) {
+            $('.answer-sortable').each((i) => {
+                mapAnswers.answers[index].answer.push($('.answer-sortable').eq(i).text())
+            })
+        }
         handleQuestions()
     }
     else {
@@ -196,6 +201,61 @@ function adaptAnswerHeight(heightContainer) {
         $('div.wrapper').css('height', nb)
 }
 
+
+$(document).on("click", ".answers-arrow-down", function(e) {
+    const question = mapQuestions[index]
+    const parent = $(e.target).parent().parent()
+
+    $(e.target).parent().parent().before(parent.next())
+
+    for (var i = 0; i < question.answers.length; i++) {
+        $('#questions .right .wrapper').eq(i).find('.answers-arrow').remove()
+
+        if (i === 0) {
+            $('#questions .right .wrapper').eq(i).append(`
+               <a class="answers-arrow answers-arrow-down"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+            `)
+        }
+        else if (i !== 0 && i !== question.answers.length - 1) {
+            $('#questions .right .wrapper').eq(i).append(`
+               <a class="answers-arrow answers-arrow-down"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+               <a class="answers-arrow answers-arrow-up"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+            `)
+        }
+        else if (i === question.answers.length - 1) {
+            $('#questions .right .wrapper').eq(i).append(`
+               <a class="answers-arrow answers-arrow-up"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+            `)
+        }
+    }
+})
+$(document).on("click", ".answers-arrow-up", function(e) {
+    const question = mapQuestions[index]
+    const parent = $(e.target).parent().parent()
+    $(e.target).parent().parent().after(parent.prev())
+
+    for (var i = 0; i < question.answers.length; i++) {
+        $('#questions .right .wrapper').eq(i).find('.answers-arrow').remove()
+
+        if (i === 0) {
+            $('#questions .right .wrapper').eq(i).append(`
+               <a class="answers-arrow answers-arrow-down"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+            `)
+        }
+        else if (i !== 0 && i !== question.answers.length - 1) {
+            $('#questions .right .wrapper').eq(i).append(`
+               <a class="answers-arrow answers-arrow-down"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+               <a class="answers-arrow answers-arrow-up"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+            `)
+        }
+        else if (i === question.answers.length - 1) {
+            $('#questions .right .wrapper').eq(i).append(`
+               <a class="answers-arrow answers-arrow-up"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+            `)
+        }
+    }
+})
+
 function changeQuestionElement(heightContainer, newIndex) {
     const saveIndex = newIndex || index
     const question = mapQuestions[saveIndex]
@@ -207,19 +267,52 @@ function changeQuestionElement(heightContainer, newIndex) {
     $('#questions').css('background-image', `url(https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-${index + 1}.jpg)`)
     $('#sur-title-questions').html(question.sur_title)
     $('#title-questions').html(question.title)
-    $('#sub-title-questions').html(question.sub_title)
+    if ($(window).width() < 640 && question.sub_title_small)
+        $('#sub-title-questions').html(question.sub_title_small)
+    else
+        $('#sub-title-questions').html(question.sub_title)
 
     if (question.sortable) {
         $('#questions .right').attr('id', 'sortable')
-        for (var i = 0; i < question.answers.length; i++) {
-            $('#questions .right').append(`<div class="wrapper sortable-container"><a class="answer answer-sortable" href="""></a></div>`)
-            $('#questions .right .answer').eq(i).html(question.answers[i])
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+        if ($(window).width() > 640) {
+            for (var i = 0; i < question.answers.length; i++) {
+                    $('#questions .right').append(`<div class="wrapper sortable-container">
+                <div class="answer answer-sortable" href="""></div>
+                </div>`)
 
-            adaptAnswerHeight(heightContainer)
+                $('#questions .right .answer').eq(i).html(question.answers[i])
 
-            $( "#sortable" ).sortable();
-            $( "#sortable" ).disableSelection();
+            }
         }
+        else {
+            for (var i = 0; i < question.answers.length; i++) {
+                if (i === 0) {
+                    $('#questions .right').append(`<div class="wrapper sortable-container">
+                <a class="answers-arrow answers-arrow-down"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+                <div class="answer answer-sortable" href="""></div>
+                </div>`)
+                }
+                else if (i !== 0 && i !== question.answers.length - 1) {
+                    $('#questions .right').append(`<div class="wrapper sortable-container">
+                <a class="answers-arrow answers-arrow-down"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+                <a class="answers-arrow answers-arrow-up"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+                <div class="answer answer-sortable" href="""></div>
+                </div>`)
+                }
+                else if (i === question.answers.length - 1) {
+                    $('#questions .right').append(`<div class="wrapper sortable-container">
+                <a class="answers-arrow answers-arrow-up"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
+                <div class="answer answer-sortable" href="""></div>
+                </div>`)
+                }
+
+                $('#questions .right .answer').eq(i).html(question.answers[i])
+
+            }
+        }
+        adaptAnswerHeight(heightContainer)
     }
     else {
         $('#questions .right').removeAttr('id')
@@ -323,6 +416,16 @@ $(document).on("click", "#bt-nps", function(e){
     if (checked) {
         $('#nps .error').hide()
         $('#nps').fadeOut('slow', () => {
+
+
+            $('.nps-answer').each((i) => {
+                if ($('.nps-answer').eq(i).hasClass('selected')) {
+                    mapAnswers.nps = i + 1;
+                }
+            })
+            sendData()
+
+
             $('#merci').fadeIn('slow', () => {
             })
         })
