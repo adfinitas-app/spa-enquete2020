@@ -147,7 +147,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 }
 
 .header {
-    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-1.png");
+    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-1.jpg");
 
 }
 
@@ -227,7 +227,6 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 
 
 #questions {
-    display: none;
 }
 #questions .container .left .images {
     margin-bottom: 6%;
@@ -298,10 +297,18 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     width: 100%;
 }
 
-#nps {
+.error {
     display: none;
+    color: #f6dfd7;
+    text-transform: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+#nps {
     padding-top: 80px;
-    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-NPA.png");
+    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-NPA.jpg");
 }
 #nps h1 {
     font-family: 'Adopte Bold', serif;
@@ -372,7 +379,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 #merci {
     display: none;
     padding-top: 80px;
-    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-merci.png");
+    background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-9.jpg");
 }
 #merci h1 {
     font-family: 'Adopte Bold', serif;

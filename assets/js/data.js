@@ -1,3 +1,18 @@
+var mapAnswers = {
+    answers: [
+        {answer: []},
+        {answer: []},
+        {answer: []},
+        {answer: []},
+        {answer: []},
+        {answer: []},
+        {answer: []},
+        {answer: []},
+        {answer: []}
+    ],
+    nps: 0
+}
+
 var mapQuestions = [
     {
 

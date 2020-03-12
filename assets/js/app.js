@@ -1,16 +1,15 @@
 var imgs = [
     'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/optin-checked.jpg',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-1.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-2.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-3.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-4.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-5.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-6.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-7.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-8.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-9.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-NPA.png',
-    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-merci.png'
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-1.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-2.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-3.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-4.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-5.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-6.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-7.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-8.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-9.jpg',
+    'https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-slide-NPA.jpg',
 ]
 
 var index = 0;
@@ -27,35 +26,95 @@ $(document).ready( function() {
     handleQuestions(true)
 });
 
-$(document).on("click", ".answer-btn, .answer-btn span", function(e){
-    console.log('CLICK ANSWER')
+$(document).on("click", ".nps-answer", function(e){
     e.preventDefault()
     var _this = $(e.target)
-    $('#questions .right .answer').each((i) => {
-        $('#questions .right .answer').eq(i).removeClass('selected')
-    })
 
 
+
+        $('.nps-answer').each((i) => {
+                $('.nps-answer').eq(i).removeClass('selected')
+        })
 
     if (_this.hasClass('selected')) {
         _this.removeClass('selected')
     }
-    else {
+    else
         _this.addClass('selected')
-    }
+
 })
+
+$(document).on("click", ".answer-btn", function(e){
+    e.preventDefault()
+    var _this = $(e.target)
+    var checked = false
+
+    if (_this.hasClass('selected')) {
+        checked = true
+        _this.removeClass('selected')
+    }
+    var checkedNumber = getNumberOfSelectedAnswers()
+
+    if (checkedNumber === mapQuestions[index].multiple) {
+        $('#questions .right .answer').each((i) => {
+            if ($('#questions .right .answer').eq(i).hasClass('selected')) {
+                $('#questions .right .answer').eq(i).removeClass('selected')
+
+                return false
+            }
+        })
+    }
+
+    if (!checked)
+        _this.addClass('selected')
+
+})
+
+function getNumberOfSelectedAnswers() {
+    var checkedNumber = 0
+
+    $('.answer-btn').each((i) => {
+        if ($('.answer-btn').eq(i).hasClass('selected')) {
+            checkedNumber++
+        }
+    })
+
+    return checkedNumber
+}
 $(document).on("click", "#validate-question", function(e){
     e.preventDefault()
-    handleQuestions()
+    $('#questions .right .error').html('')
+    var checkedNumber = getNumberOfSelectedAnswers()
+
+    if (checkedNumber > 0) {
+        $('.answer-btn').each((i) => {
+            if ($('.answer-btn').eq(i).hasClass('selected')) {
+                mapAnswers.answers[index].answer.push($('.answer-btn').eq(i).text())
+            }
+        })
+        console.log(mapAnswers)
+        handleQuestions()
+    }
+    else {
+        handleErrorQuestions()
+    }
+
 })
 
-function handleQuestions(first) {
-    console.log($('#questions .right').height() - 120)
-    console.log($('.header .right').height() - 120)
+function handleErrorQuestions() {
+    const number = mapQuestions[index].multiple
 
+    if (number > 1) {
+        $('#questions .right .error').show().html('<br />Merci de selectionner au moins une réponse')
+    }
+    else
+        $('#questions .right .error').show().html('<br />Merci de selectionner une réponse')
+}
+
+function handleQuestions(first) {
     var height = $('#questions .right').height() - 120
 
-    if (index >= mapQuestions.length) {
+    if (index >= mapQuestions.length - 1) {
         $('#questions').fadeOut('slow', () => {
             $('#nps').fadeIn('slow', () => {
             })
@@ -63,6 +122,7 @@ function handleQuestions(first) {
     }
     else {
         if (!first) {
+            index++
             $('#questions').fadeOut('slow', () => {
                 changeQuestionElement(height)
                 $('#questions').fadeIn('slow', () => {
@@ -78,12 +138,11 @@ function handleQuestions(first) {
 }
 
 function changeQuestionElement(heightContainer) {
-    console.log(heightContainer)
     const question = mapQuestions[index]
 
     $('#questions .right').empty()
 
-    $('#questions').css('background-image', `url(https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-${index + 1}.png)`)
+    $('#questions').css('background-image', `url(https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-${index + 1}.jpg)`)
     $('#sur-title-questions').html(question.sur_title)
     $('#title-questions').html(question.title)
     $('#sub-title-questions').html(question.sub_title)
@@ -94,9 +153,7 @@ function changeQuestionElement(heightContainer) {
         const nb = Math.round(heightContainer / question.answers.length - 1)
         $('div.wrapper').css('height', nb)
     }
-    $('#questions .right').append(`<button id="validate-question">Valider</span></button>`)
-
-    index++
+    $('#questions .right').append(`<button id="validate-question">Valider<span class="error"></span></button>`)
 }
 
 
@@ -135,10 +192,28 @@ $(document).on("click", "#bt-header", function(e){
 
 $(document).on("click", "#bt-nps", function(e){
     e.preventDefault()
-    $('#nps').fadeOut('slow', () => {
-        $('#merci').fadeIn('slow', () => {
-        })
+    var checked = false
+
+    $('.nps-answer').each((i) => {
+        if ($('.nps-answer').eq(i).hasClass('selected')) {
+            checked = true
+
+            return false
+        }
     })
+
+    if (checked) {
+        $('#nps .error').hide()
+        $('#nps').fadeOut('slow', () => {
+            $('#merci').fadeIn('slow', () => {
+            })
+        })
+    }
+    else {
+        $('#nps .error').show()
+    }
+
+
 })
 
 
