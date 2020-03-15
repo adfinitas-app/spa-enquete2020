@@ -95,15 +95,44 @@ $(document).on("click", ".nps-answer", function(e){
 
 })
 
+$(document).on("click", ".answer-btn.input", function(el) {
+    var _this = $(el.target)
+
+    _this.find('input').focus()
+})
+
+var checkedInput = false
+$(document).on("focus", ".input-answer", function(el) {
+    var _this = $(el.target)
+
+    removeSelected()
+    checkedInput = true
+    _this.parent().parent().addClass('selected')
+})
+
 $(document).on("click", ".answer-btn", function(e){
     e.preventDefault()
-    var _this = $(e.target)
-    var checked = false
+    if (!checkedInput) {
+        var _this = $(e.target)
+        var checked = false
 
-    if (_this.hasClass('selected')) {
-        checked = true
-        _this.removeClass('selected')
+        if (_this.hasClass('selected')) {
+            checked = true
+            _this.removeClass('selected')
+        }
+
+        removeSelected()
+
+        if (!checked)
+            _this.addClass('selected')
     }
+    else
+        checkedInput = false
+
+
+})
+
+function removeSelected() {
     var checkedNumber = getNumberOfSelectedAnswers()
 
     if (checkedNumber === mapQuestions[index].multiple) {
@@ -115,11 +144,7 @@ $(document).on("click", ".answer-btn", function(e){
             }
         })
     }
-
-    if (!checked)
-        _this.addClass('selected')
-
-})
+}
 
 function getNumberOfSelectedAnswers() {
     var checkedNumber = 0
@@ -141,7 +166,12 @@ $(document).on("click", "#validate-question", function(e){
         mapAnswers.answers[index].answer = []
         $('.answer-btn').each((i) => {
             if ($('.answer-btn').eq(i).hasClass('selected')) {
-                mapAnswers.answers[index].answer.push($('.answer-btn').eq(i).text())
+                if ($('.answer-btn').hasClass('input')) {
+                    mapAnswers.answers[index].answer.push($('.answer-btn').find('input').val())
+                }
+                else {
+                    mapAnswers.answers[index].answer.push($('.answer-btn').eq(i).text())
+                }
             }
         })
         if (mapQuestions[index].sortable) {
@@ -278,7 +308,7 @@ function changeQuestionElement(heightContainer, newIndex) {
         $( "#sortable" ).disableSelection();
         if ($(window).width() > 640) {
             for (var i = 0; i < question.answers.length; i++) {
-                    $('#questions .right').append(`<div class="wrapper sortable-container">
+                $('#questions .right').append(`<div class="wrapper sortable-container">
                 <div class="answer answer-sortable" href="""></div>
                 </div>`)
 
@@ -317,8 +347,14 @@ function changeQuestionElement(heightContainer, newIndex) {
     else {
         $('#questions .right').removeAttr('id')
         for (var i = 0; i < question.answers.length; i++) {
-            $('#questions .right').append(`<div class="wrapper"><a class="answer answer-btn" href="""></a></div>`)
-            $('#questions .right .answer').eq(i).html(question.answers[i])
+            if (question.input && i === question.input) {
+                $('#questions .right').append(`<div class="wrapper"><a class="answer answer-btn input" href="""></a></div>`)
+                $('#questions .right .answer').eq(i).html(`<span>${question.answers[i]}</span><div class="container-input"><input type="text" placeholder="..." class="input-answer" /></div>`)
+            }
+            else {
+                $('#questions .right').append(`<div class="wrapper"><a class="answer answer-btn" href="""></a></div>`)
+                $('#questions .right .answer').eq(i).html(question.answers[i])
+            }
 
             adaptAnswerHeight(heightContainer)
         }

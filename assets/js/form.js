@@ -1,11 +1,8 @@
 $(document).on("click", ".bt-header", function(e){
     e.preventDefault()
-    if ($(window.width > 640)) {
+    if ($(window.width) > 640) {
         if ($('.header form').css('display') === 'none') { // FIRST
-            $('#expand-small').hide()
             $('.header .right button').css('margin-top', '25px')
-            $('#filter-small').show()
-            $('#back-small').css('display','block')
             $('.text-small').hide()
             $('.header .right p').slideUp('slow')
 
@@ -25,9 +22,18 @@ $(document).on("click", ".bt-header", function(e){
     }
     else {
         if ($('.header form').css('display') === 'none') { // FIRST
+            if ($(window).width < 640) {
+                const nbs = ($('.iti-flag').css('background-position').split(' '))
+                $('.iti-flag').css('background-position', `${parseInt(nbs[0]) + 7}px ${nbs[1]}`)
+            }
+
             $('.header .right .inner').addClass('padding-expanded')
+            $('#filter-small').show()
+            $('#expand-small').hide()
+            $('#back-small').css('display','block')
             $('.header form').slideDown('slow')
             $('.header .right p').slideUp('slow')
+            $('.header .right .inner').css('padding', '25% 22px 20px')
         }
         else {
             if (validateForm()) {

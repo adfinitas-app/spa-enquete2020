@@ -9,6 +9,7 @@ function sendData() {
     const country = $('#f_country').find(":selected").val()
     const gender = $('#f_civility').find(":selected").val()
     const phone = getPhone()
+    const reserved_code_media = p['reserved_code_media']
 
     const payload = {
         "reveal_lead": {
@@ -66,6 +67,30 @@ function sendData() {
             },
             "addLists": ['2020-enquete-nationale'],
             "delLists": []
+        },
+        "db": {
+            "schema": "spa_enquete20",
+            "db": {
+                "firstname": firstname,
+                "lastname": lastname,
+                "email": email,
+                "phone": phone,
+                "civility": getCivility(gender),
+                "sexe": gender,
+                "name": 	`${firstname} ${lastname}`,
+                "language": "fr_FR",
+                "reserved_code_media" : reserved_code_media || '',
+                'question_1': mapAnswers.answers[0].length > 1 ? mapAnswers.answers[0].join(',') : mapAnswers.answers[0].answer[0] ,
+                'question_2': mapAnswers.answers[1].length > 1 ? mapAnswers.answers[1].join(',') : mapAnswers.answers[1].answer[0] ,
+                'question_3': mapAnswers.answers[2].length > 1 ? mapAnswers.answers[2].join(',') : mapAnswers.answers[2].answer[0] ,
+                'question_4': mapAnswers.answers[3].length > 1 ? mapAnswers.answers[3].join(',') : mapAnswers.answers[3].answer[0] ,
+                'question_5': mapAnswers.answers[4].length > 1 ? mapAnswers.answers[4].join(',') : mapAnswers.answers[4].answer[0] ,
+                'question_6': mapAnswers.answers[5].length > 1 ? mapAnswers.answers[5].join(',') : mapAnswers.answers[5].answer[0] ,
+                'question_7': mapAnswers.answers[6].length > 1 ? mapAnswers.answers[6].join(',') : mapAnswers.answers[6].answer[0] ,
+                'question_8': mapAnswers.answers[7].length > 1 ? mapAnswers.answers[7].join(',') : mapAnswers.answers[7].answer[0] ,
+                'question_9': mapAnswers.answers[8].length > 1 ? mapAnswers.answers[8].join(',') : mapAnswers.answers[8].answer[0] ,
+                'nps': mapAnswers.nps ,
+            }
         },
     }
 

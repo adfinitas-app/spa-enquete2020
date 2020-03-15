@@ -43,7 +43,8 @@ var mapQuestions = [
             'Autre, précisez'
         ],
         multiple: 1,
-        sortable: false
+        sortable: false,
+        input: 5,
     },
     {
 
