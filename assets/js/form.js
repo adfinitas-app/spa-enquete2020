@@ -22,7 +22,7 @@ $(document).on("click", ".bt-header", function(e){
     }
     else {
         if ($('.header form').css('display') === 'none') { // FIRST
-            if ($(window).width < 640) {
+            if ($(window).width() < 640) {
                 const nbs = ($('.iti-flag').css('background-position').split(' '))
                 $('.iti-flag').css('background-position', `${parseInt(nbs[0]) + 7}px ${nbs[1]}`)
             }

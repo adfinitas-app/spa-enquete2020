@@ -24,12 +24,12 @@ function fillLink() {
         code_media = p['reserved_code_media'];
         if (p['reserved_code_media'].indexOf("W20F") !== -1) {
             donateur = true;
-            string += '?cid=217'
+            string += '?cid=216'
         }
     }
 
     if (!donateur) {
-        string += '?cid=216'
+        string += '?cid=217'
         $('#form .prospect-part').show()
     }
 
@@ -304,21 +304,37 @@ function changeQuestionElement(heightContainer, newIndex) {
 
     if (question.sortable) {
         $('#questions .right').attr('id', 'sortable')
-        $( "#sortable" ).sortable();
+        $( "#sortable" ).sortable({
+            cancel: ".sortable-hint"
+        });
         $( "#sortable" ).disableSelection();
         if ($(window).width() > 640) {
             for (var i = 0; i < question.answers.length; i++) {
+                if (i === 0) {
+                    $('#questions .right').append(`<div class="sortable-hint first">
+                        <span>La plus importante</span>
+                    </div>`)
+                }
                 $('#questions .right').append(`<div class="wrapper sortable-container">
                 <div class="answer answer-sortable" href="""></div>
                 </div>`)
 
                 $('#questions .right .answer').eq(i).html(question.answers[i])
 
+            if (i === question.answers.length - 1) {
+                    $('#questions .right').append(`<div class="sortable-hint last">
+                        <span>La moins importante</span>
+                    </div>`)
+                }
             }
         }
         else {
+            $('#questions .right').append(`<div class="sortable-hint first">
+                        <span>La plus importante</span>
+                    </div>`)
             for (var i = 0; i < question.answers.length; i++) {
                 if (i === 0) {
+
                     $('#questions .right').append(`<div class="wrapper sortable-container">
                 <a class="answers-arrow answers-arrow-down"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
                 <div class="answer answer-sortable" href="""></div>
@@ -332,6 +348,7 @@ function changeQuestionElement(heightContainer, newIndex) {
                 </div>`)
                 }
                 else if (i === question.answers.length - 1) {
+
                     $('#questions .right').append(`<div class="wrapper sortable-container">
                 <a class="answers-arrow answers-arrow-up"><img class="" src="https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/icon-arrow-right.png" alt="" /></a>
                 <div class="answer answer-sortable" href="""></div>
@@ -341,6 +358,9 @@ function changeQuestionElement(heightContainer, newIndex) {
                 $('#questions .right .answer').eq(i).html(question.answers[i])
 
             }
+            $('#questions .right').append(`<div class="sortable-hint last">
+                        <span>La moins importante</span>
+                    </div>`)
         }
         adaptAnswerHeight(heightContainer)
     }

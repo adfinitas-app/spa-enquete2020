@@ -38,8 +38,8 @@ var mapQuestions = [
             'Non, je ne possède pas d’animal',
             'Oui, un chien',
             'Oui, un chat',
-            'NAC',
-            'Équidé',
+            'Oui, un animal faisant partie des<br />« nouveaux animaux de compagnie » (NAC)',
+            'Oui, un équidé',
             'Autre, précisez'
         ],
         multiple: 1,
