@@ -441,13 +441,14 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 }
 #nps h1 {
     font-family: 'Adopte Bold', serif;
-    font-size: 60px;
+    font-size: 58px;
     font-weight: bold;
-    line-height: 0.9;
+    line-height: 1.1;
     color: white;
+    margin-bottom: 15px;
 }
 #nps h1 span {
-    font-size: 80px;
+    font-size: 72px;
 }
 #nps .title {
     margin-top: 7%;
@@ -619,8 +620,11 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
         padding: 10px 5px;
         width: 100%;
     }
+    .fixed-nav .rs {
+        display: inline-block;
+    }
     .fixed-nav img {
-        margin-right: 0;
+        margin-right: 0 !important;
         max-width: 28px;
     }
     .fixed-nav a {

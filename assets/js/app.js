@@ -482,6 +482,7 @@ $(document).on("click", "#bt-nps", function(e){
             sendData()
 
 
+            $('.fixed-nav').css('width', '100% !important');
             $('#merci').fadeIn('slow', () => {
             })
         })
