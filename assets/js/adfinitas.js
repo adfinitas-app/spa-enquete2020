@@ -94,7 +94,7 @@ function sendData() {
         },
     }
 
-    console.log(payload)
+    // console.log(payload)
     makeCorsRequest(payload)
 }
 

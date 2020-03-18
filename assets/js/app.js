@@ -202,6 +202,7 @@ function handleQuestions(first) {
 
     if (index >= mapQuestions.length - 1) {
         $('#questions').fadeOut('slow', () => {
+            $('.fixed-nav').css('width', '100%');
             $('#nps').fadeIn('slow', () => {
             })
         })
@@ -482,7 +483,6 @@ $(document).on("click", "#bt-nps", function(e){
             sendData()
 
 
-            $('.fixed-nav').css('width', '100% !important');
             $('#merci').fadeIn('slow', () => {
             })
         })
