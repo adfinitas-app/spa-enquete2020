@@ -18,7 +18,7 @@ var mapQuestions = [
 
         sur_title: null,
         title: 'Dans quelle tranche <br />d’âge vous situez-vous&nbsp;?',
-        sub_title: '*Vous avez moins de 18 ans&nbsp;? Nous sommes désolés<br />de ne pouvoir accepter vos réponses, cette enquête<br />étant strictement réservée aux personnes majeures.',
+        sub_title: '*Vous avez moins de 18 ans&nbsp;? Nous sommes désolés de ne pouvoir accepter<br />vos réponses, cette enquête étant strictement réservée aux personnes majeures.',
         answers: [
             '18 – 30 ans',
             '31 – 45 ans',
@@ -33,7 +33,7 @@ var mapQuestions = [
 
         sur_title: null,
         title: 'Possédez-vous un ou plusieurs<br />animaux de compagnie&nbsp;?<br />et si oui, LE(S)QUEL(S)&nbsp;?',
-        sub_title: null,
+        sub_title: '(Plusieurs réponses possibles)',
         answers: [
             'Non, je ne possède pas d’animal',
             'Oui, un chien',
@@ -42,7 +42,7 @@ var mapQuestions = [
             'Oui, un équidé',
             'Autre, précisez'
         ],
-        multiple: 1,
+        multiple: 7,
         sortable: false,
         input: 5,
     },
@@ -119,7 +119,7 @@ var mapQuestions = [
 
         sur_title: null,
         title: 'Pensez-vous qu’en France,<br />les peines* à l’encontre de ceux <br />qui abandonnent ou maltraitent les<br />animaux sont suffisantes&nbsp;?',
-        sub_title: '*Aujourd’hui les actes de maltraitance envers les<br />animaux sont passibles de 2 ans d’emprisonnement<br />et jusqu’à 30 000 € d’amende.',
+        sub_title: '*Aujourd’hui les actes de maltraitance envers les animaux sont passibles<br />de 2 ans d’emprisonnement et jusqu’à 30 000 € d’amende.',
         answers: [
             'Oui',
             'Non',
@@ -131,8 +131,8 @@ var mapQuestions = [
 
         sur_title: null,
         title: 'Quelle doit être selon vous<br />l’action prioritaire de la SPA&nbsp;?',
-        sub_title: 'Classez les actions par ordre de priorité.<br />(glisser et déposer les choix)',
-        sub_title_small: 'Classez les actions par ordre de priorité.<br />(Cliquez sur les fléches pour trier les choix)',
+        sub_title: 'Positionnez votre réponse de la plus importante à la moins importante.<br />(Cliquez et maintenez votre souris pour déplacer votre réponse)',
+        sub_title_small: 'Positionnez votre réponse de la plus importante à la moins importante.<br />(Cliquez sur les fléches pour trier les choix)',
         answers: [
             'Le sauvetage des animaux abandonnés<br />ou maltraités et la recherche d’un<br />nouveau foyer aimant dans le cadre<br />d’une adoption responsable',
             'L’éducation des jeunes générations<br />au respect des animaux',

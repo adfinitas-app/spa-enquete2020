@@ -56,7 +56,7 @@ function fillLink() {
 
 }
 
-var index = 0;
+var index = 7;
 preload(imgs)
 
 $(document).foundation();
@@ -304,19 +304,20 @@ function changeQuestionElement(heightContainer, newIndex) {
         $('#sub-title-questions').html(question.sub_title)
 
     if (question.sortable) {
-        $('#questions .right').attr('id', 'sortable')
-        $( "#sortable" ).sortable({
+        $('#questions .right').append('<div class="sortable-container-upper"></div>')
+        $('#questions .right .sortable-container-upper').attr('id', 'sortable')
+        $( "#questions .right .sortable-container-upper" ).sortable({
             cancel: ".sortable-hint"
         });
-        $( "#sortable" ).disableSelection();
+        $( "#questions .right .sortable-container-upper" ).disableSelection();
         if ($(window).width() > 640) {
             for (var i = 0; i < question.answers.length; i++) {
                 if (i === 0) {
-                    $('#questions .right').append(`<div class="sortable-hint first">
+                    $('#questions .right').prepend(`<div class="sortable-hint first">
                         <span>La plus importante</span>
                     </div>`)
                 }
-                $('#questions .right').append(`<div class="wrapper sortable-container">
+                $('#questions .right .sortable-container-upper').append(`<div class="wrapper sortable-container">
                 <div class="answer answer-sortable" href="""></div>
                 </div>`)
 

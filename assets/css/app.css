@@ -179,6 +179,13 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     background-color: rgba(0,0,0,0.3);
     z-index: 1;
 }
+
+#filter-big {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 10;
+}
 #back-small {
     display: none;
     z-index: 2;
@@ -196,6 +203,9 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     font-family: 'Adopte Bold', serif;
     font-size: 82px;
     line-height: 0.9;
+
+    position: relative;
+    z-index: 11;
 }
 .header .title p {
     font-family: 'Barlow Condensed', sans-serif;
@@ -203,6 +213,9 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     font-weight: 600;
     line-height: 1.1;
     color: white;
+
+    position: relative;
+    z-index: 11;
 }
 
 
@@ -211,7 +224,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 }
 .header .right .inner {
     text-align: left;
-    padding: 50% 42px 20px;
+    padding: 45% 42px 20px;
 
     -webkit-transition: padding 0.4s ease-out;
     -moz-transition: padding 0.4s ease-out;
@@ -252,6 +265,8 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     transition: transform 0.4s ease-out;
 }
 .container .left {
+    position: relative;
+    min-height: 100vh;
     padding-top: 80px;
 }
 .container .images {
@@ -286,7 +301,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     position: relative;
 }
 #title-questions {
-    font-family: 'Adopte', serif;
+    font-family: 'Adopte Bold', serif;
     font-size: 72px;
     font-weight: 700;
     line-height: 1.1;
@@ -301,7 +316,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 }
 #sub-title-questions {
     font-family: 'Open Sans', serif;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.2;
     color: white;
 }
@@ -509,6 +524,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 #merci {
     display: none;
     padding-top: 80px;
+    padding-bottom: 85px;
     background-image: url("https://adfinitas-statics-cdn.s3.eu-west-3.amazonaws.com/spa/2020-Enquete-nationale-175ans/bg-q-9.jpg");
 }
 #merci h1 {
