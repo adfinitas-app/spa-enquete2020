@@ -62,6 +62,7 @@ preload(imgs)
 $(document).foundation();
 
 $(window).resize( function() {
+    $('#filter-big').css('height', $('.header').height())
     if ($('#questions').css('display') === 'block')
         adaptAnswerHeight($(window).height() - 120)
 })
@@ -73,7 +74,7 @@ $(document).ready( function() {
         initialCountry: ['fr']
     });
 
-    $('#filter-big').css('height', $('.header .container .left').height() + 80)
+    $('#filter-big').css('height', $('.header').height())
     handleQuestions(true)
     fillLink()
     fillFieldsFromUrl()
