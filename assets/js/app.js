@@ -312,6 +312,9 @@ function changeQuestionElement(heightContainer, newIndex) {
         $( "#questions .right .sortable-container-upper" ).sortable({
             cancel: ".sortable-hint"
         });
+        $( ".answer-sortable" ).tooltip({
+            content: "Cliquez et maintenez votre souris pour déplacer votre réponse"
+        });
         $( "#questions .right .sortable-container-upper" ).disableSelection();
         if ($(window).width() > 640) {
             for (var i = 0; i < question.answers.length; i++) {
@@ -321,7 +324,7 @@ function changeQuestionElement(heightContainer, newIndex) {
                     </div>`)
                 }
                 $('#questions .right .sortable-container-upper').append(`<div class="wrapper sortable-container">
-                <div class="answer answer-sortable" href="""></div>
+                <div class="answer answer-sortable" title="Cliquez et maintenez votre souris pour déplacer votre réponse"></div>
                 </div>`)
 
                 $('#questions .right .answer').eq(i).html(question.answers[i])
