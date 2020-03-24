@@ -72,6 +72,8 @@ $(document).ready( function() {
         utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.12/js/utils.js',
         initialCountry: ['fr']
     });
+
+    $('#filter-big').css('height', $('.header .container .left').height() + 80)
     handleQuestions(true)
     fillLink()
     fillFieldsFromUrl()
