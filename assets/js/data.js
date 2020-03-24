@@ -36,10 +36,10 @@ var mapQuestions = [
         sub_title: '(Plusieurs réponses possibles)',
         answers: [
             'Non, je ne possède pas d’animal',
-            'Oui, un chien',
-            'Oui, un chat',
-            'Oui, un animal faisant partie des<br />« nouveaux animaux de compagnie » (NAC)',
-            'Oui, un équidé',
+            'Oui, chien',
+            'Oui, chat',
+            'Oui, NAC (Nouveaux Animaux de Compagnie)',
+            'Oui, équidé',
             'Autre, précisez'
         ],
         multiple: 7,
