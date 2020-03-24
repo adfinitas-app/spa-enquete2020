@@ -56,7 +56,7 @@ function fillLink() {
 
 }
 
-var index = 7;
+var index = 0;
 preload(imgs)
 
 $(document).foundation();
