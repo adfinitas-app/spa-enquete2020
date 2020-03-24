@@ -272,6 +272,8 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
 .container .images {
     text-align: center;
     margin-bottom: 12px;
+    position: relative;
+    z-index: 11;
 }
 .container .images img {
     margin: 15px;
