@@ -27,13 +27,16 @@ $(document).on("click", ".bt-header", function(e){
                 $('.iti-flag').css('background-position', `${parseInt(nbs[0]) + 7}px ${nbs[1]}`)
             }
 
+            $('.header h1').hide()
+            $('.header .title p').hide()
+            $('.header .right').addClass('padding-expanded')
             $('.header .right .inner').addClass('padding-expanded')
             $('#filter-small').show()
             $('#expand-small').hide()
             $('#back-small').css('display','block')
-            $('.header form').slideDown('slow')
-            $('.header .right p').slideUp('slow')
-            $('.header .right .inner').css('padding', '25% 22px 20px')
+            $('.header form').show()
+            $('.header .right p').hide()
+            $('.header .right .inner').css('padding', '0 22px 20px')
         }
         else {
             if (validateForm()) {

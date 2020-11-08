@@ -398,8 +398,10 @@ $('#back-small').click((e) => {
     e.preventDefault()
 
     $('.header h1').show()
-    $('.header .images').show()
     $('.header .title p').show()
+    $('.header .images').show()
+    $('.header .right').removeClass('padding-expanded')
+    $('.header .right .inner').removeClass('padding-expanded')
     $('#expand-small').show()
     $('.text-small').hide()
     $('.header .right button').css('margin-top', '110px')
