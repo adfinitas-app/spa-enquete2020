@@ -638,7 +638,14 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
         font-size: 12px;
     }
     .fixed-nav {
-        width: 58.33333%;
+        position: fixed;
+        padding: 10px 5px;
+        width: 100%;
+    }
+    .header .container .right {
+        position: fixed;
+        bottom: 50px;
+        z-index: 11;
     }
 }
 @media screen and (max-width: 640px) {
@@ -648,10 +655,7 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     .container .left {
         min-height: auto;
     }
-    .header .container .right {
-        position: absolute;
-        bottom: 50px;
-    }
+
     .header .container .right.padding-expanded {
         position: static;
     }
@@ -661,10 +665,6 @@ p, h1, h2, h3, h4, h5, h6, a, button, ul, li {
     .header .right button {
         margin-top: 0 !important;
         margin-bottom: 0 !important;
-    }
-    .fixed-nav {
-        padding: 10px 5px;
-        width: 100%;
     }
     .fixed-nav .rs {
         display: inline-block;
