@@ -12,86 +12,46 @@ function sendData() {
     const reserved_code_media = p['reserved_code_media']
 
     const payload = {
-        "reveal_lead": {
-            "source": "REGIE_SOURCE",
-            "contacts": [
-                {
-                    "app_id": 		"la-spa.fr",
-                    "campaign": 	p['utm_campaign'] || '',
-                    "medium": 		p['utm_medium'] || 'ORGANIC',
-                    "interface": 	"LP-CLIENT",
-                    "email": 		email,
-                    "firstname": 	firstname,
-                    "lastname": 	lastname,
-                    "gender": 		gender,
-                    "phone": 		phone,
-                }
-            ]
+        "dataToInsert": {
+            "app_id": "la-spa.fr",
+            "campaign": p['utm_campaign'] || '',
+            "medium": p['utm_medium'] || 'ORGANIC',
+            "interface": "LP-CLIENT",
+            "email": email,
+            "firstname": firstname,
+            "lastname": lastname,
+            "gender": gender,
+            "phone": phone,
+            "created_date": new Date()
         },
-        "woopra" : {
-            "host": 	"prometer.io",
-            "cv_name": 	`${firstname} ${lastname}`,
-            "cv_email": email,
-            'cv_phone': phone,
-            'cv_civility': getCivility(gender),
-            'cv_civility_dear': getCivilityDear(gender),
-            'cv_gender': gender,
-            'cv_firstname': firstname,
-            'cv_lastname': lastname,
-            /* Variables de l'événement, : préfixe : "ce_" */
-            "event": 	"adfinitas_leads",	// Nom de l'événement à tracker si applicable. Non préfixé.
-            'ce_email': email,
-            'ce_phone': phone,
-            'ce_gender': gender,
-            'ce_app_id': 'la-spa.fr',
-            'ce_campaign_name': p['utm_campaign'] || '',
-            'ce_campaign_source': p['utm_source'] || 'DIRECT',
-            'ce_campaign_medium': p['utm_medium'] || 'ORGANIC',
-            'ce_interface': 'LP-CLIENT'
-        },
-        "mailjet" : {
-            "Email": email,
-            "Properties": {
-                "firstname": 		firstname,
-                "lastname": 		lastname,
-                "civility":			getCivility(gender),
-                "civility_dear":	getCivilityDear(gender),
-                "sexe":				gender,
-                'civility_long': getCivilityLong(gender),
-                'personnalisation': getPersonnalisation(gender),
-                'personnalisation_courte': getPersonnalisationCourte(gender),
-                'address1': adress,
-                'city': city,
-                'postcode': zipcode,
-                'country': country,
-            },
-            "addLists": ['2020-enquete-nationale'],
-            "delLists": []
-        },
-        "db": {
-            "schema": "spa_enquete20",
-            "db": {
-                "firstname": firstname,
-                "lastname": lastname,
-                "email": email,
-                "phone": phone,
-                "civility": getCivility(gender),
-                "sexe": gender,
-                "name": 	`${firstname} ${lastname}`,
-                "language": "fr_FR",
-                "reserved_code_media" : reserved_code_media || '',
-                'question_1': mapAnswers.answers[0].length > 1 ? mapAnswers.answers[0].join(',') : mapAnswers.answers[0].answer[0] ,
-                'question_2': mapAnswers.answers[1].length > 1 ? mapAnswers.answers[1].join(',') : mapAnswers.answers[1].answer[0] ,
-                'question_3': mapAnswers.answers[2].length > 1 ? mapAnswers.answers[2].join(',') : mapAnswers.answers[2].answer[0] ,
-                'question_4': mapAnswers.answers[3].length > 1 ? mapAnswers.answers[3].join(',') : mapAnswers.answers[3].answer[0] ,
-                'question_5': mapAnswers.answers[4].length > 1 ? mapAnswers.answers[4].join(',') : mapAnswers.answers[4].answer[0] ,
-                'question_6': mapAnswers.answers[5].length > 1 ? mapAnswers.answers[5].join(',') : mapAnswers.answers[5].answer[0] ,
-                'question_7': mapAnswers.answers[6].length > 1 ? mapAnswers.answers[6].join(',') : mapAnswers.answers[6].answer[0] ,
-                'question_8': mapAnswers.answers[7].length > 1 ? mapAnswers.answers[7].join(',') : mapAnswers.answers[7].answer[0] ,
-                'question_9': mapAnswers.answers[8].length > 1 ? mapAnswers.answers[8].join(',') : mapAnswers.answers[8].answer[0] ,
-                'nps': mapAnswers.nps ,
-            }
-        },
+        "email": email,
+        "firstname": firstname,
+        "lastname": lastname,
+        "civility": getCivility(gender),
+        "civility_dear": getCivilityDear(gender),
+        "sexe": gender,
+        'civility_long': getCivilityLong(gender),
+        'personnalisation': getPersonnalisation(gender),
+        'personnalisation_courte': getPersonnalisationCourte(gender),
+        'address1': adress,
+        'city': city,
+        'postcode': zipcode,
+        'country': country,
+        "phone": phone,
+        "name": `${firstname} ${lastname}`,
+        "language": "fr_FR",
+        "reserved_code_media": reserved_code_media || '',
+        'question_1': mapAnswers.answers[0].length > 1 ? mapAnswers.answers[0].join(',') : mapAnswers.answers[0].answer[0],
+        'question_2': mapAnswers.answers[1].length > 1 ? mapAnswers.answers[1].join(',') : mapAnswers.answers[1].answer[0],
+        'question_3': mapAnswers.answers[2].length > 1 ? mapAnswers.answers[2].join(',') : mapAnswers.answers[2].answer[0],
+        'question_4': mapAnswers.answers[3].length > 1 ? mapAnswers.answers[3].join(',') : mapAnswers.answers[3].answer[0],
+        'question_5': mapAnswers.answers[4].length > 1 ? mapAnswers.answers[4].join(',') : mapAnswers.answers[4].answer[0],
+        'question_6': mapAnswers.answers[5].length > 1 ? mapAnswers.answers[5].join(',') : mapAnswers.answers[5].answer[0],
+        'question_7': mapAnswers.answers[6].length > 1 ? mapAnswers.answers[6].join(',') : mapAnswers.answers[6].answer[0],
+        'question_8': mapAnswers.answers[7].length > 1 ? mapAnswers.answers[7].join(',') : mapAnswers.answers[7].answer[0],
+        'question_9': mapAnswers.answers[8].length > 1 ? mapAnswers.answers[8].join(',') : mapAnswers.answers[8].answer[0],
+        'nps': mapAnswers.nps,
+
     }
 
     // console.log(payload)
@@ -129,7 +89,7 @@ function createCORSRequest(method, url) {
     return xhr;
 }
 function makeCorsRequest(data) {
-    var url = 'https://adfinitas-io.herokuapp.com/api/v1/organization/3a15acaa-ae68-49cf-9244-616cb46067ff/webhook/97ea9471-84a7-4e59-8b06-533b8a483f77';
+    var url = 'https://collector.calicut.adfinitas.io/f48dcab9-739d-471b-9f98-5a79aafa2e41';
     var body = JSON.stringify(data);
     var xhr = createCORSRequest('POST', url);
     if (!xhr) {
